@@ -12,7 +12,8 @@ class ShipSetting implements GamePhase {
 
     @Override
     public void askUser(Player x){
-
+        ask = new shipSetting_ask();
+        ask.print(x);
     }
 
     @Override

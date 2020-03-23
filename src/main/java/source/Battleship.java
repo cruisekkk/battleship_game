@@ -36,6 +36,7 @@ public class Battleship {
 
         for (Player player: players) {
             phase.printPrompt(player);
+            phase.askUser(player);
         }
     }
 }

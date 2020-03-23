@@ -25,5 +25,6 @@ public class App {
         //while(sc.hasNext()) {
         //    System.out.println("echo:"+sc.nextLine());
         //}
+        input.reader.close();
     }
 }
