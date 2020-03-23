@@ -6,7 +6,6 @@ class shipSetting_ask implements Ask {
     @Override
     public void print(Player x) {
         String s;
-        //Scanner reader = new Scanner(System.in);  // Reading from System.in
         do {
             System.out.println("Player " + x.name + " where do you want to place " + x.getShipToSet());
             s = input.reader.nextLine();

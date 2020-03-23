@@ -21,10 +21,6 @@ public class App {
             System.out.println(e);
         }
 
-        //Scanner sc = new Scanner(System.in);
-        //while(sc.hasNext()) {
-        //    System.out.println("echo:"+sc.nextLine());
-        //}
         input.reader.close();
     }
 }
