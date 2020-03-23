@@ -1,5 +1,10 @@
 package source;
 
 public class Player {
-    int i;
+    public int i;
+    public String name;
+
+    Player(String name){
+        this.name = name;
+    }
 }
