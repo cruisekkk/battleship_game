@@ -1,21 +1,28 @@
 package source;
 
 public class Player {
-    public String name;
+    public Character name;
     public Grid selfGrid;
     public Grid enemyGrid;
 
     Player(String name){
-        this.name = name;
+        this.name = new Character(name.charAt(0));
         this.selfGrid = new Grid();
         this.enemyGrid = new Grid();
     }
 
-    boolean isFullSetted(){
+    public void setShip(int row, int column, char direction){
+        selfGrid.setShip(row, column, direction);
+    }
+
+    public boolean isFullSetted(){
         return false;
     }
 
-    String displaySelf(){
+    public String displaySelf(){
         return selfGrid.show();
+    }
+    public String getShipToSet() {
+        return selfGrid.getShipToSet();
     }
 }

@@ -3,13 +3,13 @@ import java.util.Scanner;
 import java.io.*;
 
 
-public class Battleship {
+public class BattleshipGame {
     public GamePhase phase;
     public Player playerA;
     public Player playerB;
     public Player[] players;
 
-    Battleship(){
+    BattleshipGame(){
         CreateGamePhase();
         CreatePlayers();
     }
@@ -31,12 +31,17 @@ public class Battleship {
         phase.askUser(playerA);
         // if the user is not ready, the game will quit
 
-        // in the shipsetting
+        // transfer to shipSetting
         phase = phase.updateToShipSetting();
-
+        // in the shipSetting
         for (Player player: players) {
-            phase.printPrompt(player);
-            phase.askUser(player);
+            for (int i = 0; i < 10; i++) {
+                phase.printPrompt(player);
+                phase.askUser(player);
+            }
         }
+
+        //System.out.println(playerA.displaySelf());
+        //System.out.println(playerB.displaySelf());
     }
 }
