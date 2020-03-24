@@ -6,14 +6,15 @@ public class Grid {
     public Ship[] shipList;
     Grid(){
         this.shipNum = 0;
-        mapInit();
         this.shipList = new Ship[10];
+        // map initialization
         this.map = new Character[20][10];
         for (int i = 0; i < 20; i++){
             for (int j = 0; j < 10; j++){
                 map[i][j] = ' ';
             }
         }
+
     }
 
     void setShip(int row, int column, char direction) { // From ask module
@@ -62,11 +63,6 @@ public class Grid {
         return ans;
     }
 
-    public void mapInit(){
-        //this.map = " 0|1|2|3|4|5|6|7|8|9 \n";
-        //this.map +=
-    }
-
     public String getShipToSet(){
         if (shipNum < 2) {
             return "Submarine";
@@ -80,6 +76,5 @@ public class Grid {
         //if (shipNum >= 8 && shipNum < 10) {
         return "Carrier";
         //}
-
     }
 }

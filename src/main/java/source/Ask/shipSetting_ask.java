@@ -26,7 +26,24 @@ class shipSetting_ask implements Ask {
     }
     @Override
     public boolean ValidInputStr(String s){
-        return (s.toLowerCase().equals("yes") || !s.toLowerCase().equals("no"));
+        if (s.length() != 3){
+            System.out.println("You should only put here 3 characters: row char, column number, direction");
+            return false;
+        }
+        if (s.toLowerCase().charAt(0) < 'a' || s.toLowerCase().charAt(0) > 't'){
+            System.out.println("the row char should be a-t or A-T");
+            return false;
+        }
+        if (s.charAt(1) < '0' || s.charAt(1) > '9'){
+            System.out.println("the column number should be 0-9");
+            return false;
+        }
+        if (s.toLowerCase().charAt(2) != 'v' && s.toLowerCase().charAt(2) != 'h'){
+            Character a = new Character(s.toLowerCase().charAt(2));
+            System.out.println( a.toString() + "the direction should be V(v) or H(h)");
+            return false;
+        }
+        return true;
     }
 
     @Override
