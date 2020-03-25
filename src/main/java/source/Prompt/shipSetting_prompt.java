@@ -3,7 +3,7 @@ package source;
 class shipSetting_prompt implements Prompt {
     @Override
     public void print(Player x){
-        String n = "";
+        String n = "Current Ocean:\n";
         n += x.displaySelf();
         n += "Player " + x.name;
         n += " you are going to place the following ships (which are all rectangular). For each\n";

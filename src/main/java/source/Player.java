@@ -16,7 +16,7 @@ public class Player {
     }
 
     public boolean isFullSetted(){
-        return false;
+        return selfGrid.isFull();
     }
 
     public String displaySelf(){
@@ -24,5 +24,9 @@ public class Player {
     }
     public String getShipToSet() {
         return selfGrid.getShipToSet();
+    }
+
+    public Character[] getGridConflict(int row, int column, char direction){
+        return selfGrid.getConflict(row, column, direction);
     }
 }

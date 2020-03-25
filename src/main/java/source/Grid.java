@@ -14,7 +14,6 @@ public class Grid {
                 map[i][j] = ' ';
             }
         }
-
     }
 
     void setShip(int row, int column, char direction) { // From ask module
@@ -40,7 +39,6 @@ public class Grid {
         for (int i = 0; i < ship.blocks; ++i){
             map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ship.name;
         }
-
     }
 
     public String show(){
@@ -49,12 +47,10 @@ public class Grid {
             char c = (char)('A' + i);
             ans += new Character(c).toString();
             for (int j = 0; j < 10; j++){
-
                 ans += " " + map[i][j].toString();
                 if (j !=9){
                     ans += " |";
                 }
-
             }
             ans += " " + c+ "\n";
         }
@@ -71,10 +67,44 @@ public class Grid {
             return "Destroyer";
         }
         if (shipNum >= 5 && shipNum < 8) {
-            return "Battleships";
+            return "Battleship";
         }
         //if (shipNum >= 8 && shipNum < 10) {
         return "Carrier";
         //}
     }
+    // 有问题
+    public Character[] getConflict(int row, int column, char direction){
+        Ship ship = new Submarine(row, column, direction);
+        if (shipNum >= 2 && shipNum < 5) {
+            ship = new Destroyer(row, column, direction);
+        }
+        if (shipNum >= 5 && shipNum < 8) {
+            ship = new Battleship(row, column, direction);
+        }
+        if (shipNum >= 8 && shipNum < 10) {
+            ship = new Carrier(row, column, direction);
+        }
+
+        Character blank = new Character(' ');
+        for (int i = 0; i < ship.blocks; ++i){
+            int searchRow = ship.pivot[0] + ship.route[i][0];
+            int searchColumn = ship.pivot[1] + ship.route[i][1];
+            System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+            if (!map[searchRow][searchColumn].equals(blank)){
+
+                return new Character[] { (char)(row + 'A'), (char)(column + '0')};
+            }
+        }
+
+        return new Character [] {'x', 'x'};
+    }
+
+    public boolean isFull(){
+        if (this.shipNum == 10){
+            return true;
+        }
+        return false;
+    }
+
 }

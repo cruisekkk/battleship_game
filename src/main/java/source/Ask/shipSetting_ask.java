@@ -47,7 +47,20 @@ class shipSetting_ask implements Ask {
     }
 
     @Override
-    public boolean ValidInputShip(String s, Player x){
+    public boolean ValidInputShip(String s, Player x)
+    {   int row = (int)(s.toLowerCase().charAt(0) - 'a');
+        int column = (int) (s.charAt(1) - '0');
+        char direction = s.toLowerCase().charAt(2);
+        Character unblanksig = new Character('x');
+
+        Character[] conflictLoc = x.getGridConflict(row, column, direction);
+        if (!conflictLoc[1].equals(unblanksig)){
+            System.out.println("Conflict on {" + conflictLoc[0].toString() + "," +  conflictLoc[1].toString() + "}");
+            System.out.println("Please input the place again");
+            System.out.println("\n");
+            return false;
+        }
+
         return true;
     }
 }
