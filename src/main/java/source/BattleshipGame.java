@@ -47,13 +47,26 @@ public class BattleshipGame {
         players[0].setEnemyName(players[1].name);
         players[1].setEnemyName(players[0].name);
         // set mutual Grid
-        //players[0].setEnemyGrid(players[1].selfGrid);
-        //players[1].setEnemyGrid(players[0].selfGrid);
+        players[0].setEnemyGrid(players[1].selfGrid);
+        players[1].setEnemyGrid(players[0].selfGrid);
 
+        while(true){
+            phase.printPrompt(players[0]);
+            phase.askUser(players[0]); // change the enemy
+            //if (players[0].hasWon()){ // depends on the enemy
+            //    System.out.println("Game Over \nPlayer" + players[0].name + "has won!");
+            //    break;
+            //}
+            //players[1].update(players[0].SendEnemyResult);
 
-        //while(1){
-        phase.printPrompt(players[0]);
+            phase.printPrompt(players[1]);
+            phase.askUser(players[1]);
+            //if (players[1].hasWon()){ // depends on the enemy
+            //    System.out.println("Game Over \nPlayer" + players[1].name + "has won!")
+            //    break;
+            //}
+            //players[0].update(players[1].SendEnemyResult);
+        }
 
-        //}
     }
 }

@@ -9,7 +9,6 @@ public class Player {
     Player(String name){
         this.name = new Character(name.charAt(0));
         this.selfGrid = new selfGrid();
-        this.enemyGrid = new enemyGrid();
     }
 
     public String getShipToSet() {
@@ -34,6 +33,10 @@ public class Player {
 
     public void setEnemyName(Character enemyName){
         this.enemyName = enemyName;
+    }
+
+    public void setEnemyGrid(selfGrid grid){
+        this.enemyGrid = new enemyGrid(grid);
     }
 
     public String displayAll(){

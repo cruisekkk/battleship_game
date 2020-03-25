@@ -35,15 +35,16 @@ public class selfGrid extends Grid {
             shipList[shipNum] = new Carrier(row, column, direction);
         }
         // void
-        drawShip(shipList[shipNum]);
+        drawShipOnMap(shipList[shipNum]);
         shipNum = shipNum + 1;
     }
-
-    void drawShip(Ship ship) {
+    // setting phase
+    void drawShipOnMap(Ship ship) {
         for (int i = 0; i < ship.blocks; ++i) {
             map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ship.name;
         }
     }
+
     @Override
     public String show() {
         String ans = "  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  \n";

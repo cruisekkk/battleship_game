@@ -22,8 +22,8 @@ class shipSetting_ask implements Ask {
         int column = (int) (s.charAt(1) - '0');
         char direction = s.toLowerCase().charAt(2);
         x.setShip(row, column, direction); // set the players' selfgrid
-
     }
+
     @Override
     public boolean ValidInputStr(String s){
         if (s.length() != 3){
