@@ -22,11 +22,6 @@ public class enemyGrid extends Grid{
     }
 
 
-
-
-
-
-
     @Override
     public String show(){
         return "s";

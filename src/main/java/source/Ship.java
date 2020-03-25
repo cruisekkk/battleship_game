@@ -10,4 +10,5 @@ abstract class Ship{
     public int[][] route; // record the change based on pivot, for example, the original plce is [0][0], the right is [0][1]
     abstract boolean isFall();
     abstract void initRoute(char direction);
+    abstract void initMap();
 }

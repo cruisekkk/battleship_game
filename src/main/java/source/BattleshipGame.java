@@ -9,22 +9,22 @@ public class BattleshipGame {
     public Player playerB;
     public Player[] players;
 
-    BattleshipGame(){
+    BattleshipGame() {
         CreateGamePhase();
         CreatePlayers();
     }
 
-    void CreateGamePhase(){
+    void CreateGamePhase() {
         phase = new Start();
     }
 
-    void CreatePlayers(){
+    void CreatePlayers() {
         playerA = new Player("A");
         playerB = new Player("B");
-        players = new Player[] {playerA, playerB};
+        players = new Player[]{playerA, playerB};
     }
 
-    void play() throws IOException{
+    void play() throws IOException {
         System.out.println("Game start!\n");
         // in the start interface
         phase.printPrompt(playerA);
@@ -34,10 +34,10 @@ public class BattleshipGame {
         // transfer to shipSetting
         phase = phase.updateToShipSetting();
         // in the shipSetting
-        for (Player player: players) {
+        for (Player player : players) {
             //while(!player.isFullSetted()){
-                phase.printPrompt(player);
-                phase.askUser(player); // where do you want to put
+            phase.printPrompt(player);
+            phase.askUser(player); // where do you want to put
             //}
         }
 
@@ -50,23 +50,23 @@ public class BattleshipGame {
         players[0].setEnemyGrid(players[1].selfGrid);
         players[1].setEnemyGrid(players[0].selfGrid);
 
-        while(true){
+        while (true) {
             phase.printPrompt(players[0]);
             phase.askUser(players[0]); // change the enemy
-            //if (players[0].hasWon()){ // depends on the enemy
-            //    System.out.println("Game Over \nPlayer" + players[0].name + "has won!");
-            //    break;
-            //}
-            //players[1].update(players[0].SendEnemyResult);
 
+            //players[1].update(players[0].SendEnemyResult);
+            if (players[1].hasLost()) { // depends on the self
+                System.out.println("Game Over \nPlayer" + players[0].name + "has won!");
+                break;
+            }
             phase.printPrompt(players[1]);
             phase.askUser(players[1]);
-            //if (players[1].hasWon()){ // depends on the enemy
-            //    System.out.println("Game Over \nPlayer" + players[1].name + "has won!")
-            //    break;
-            //}
-            //players[0].update(players[1].SendEnemyResult);
-        }
 
+            //players[0].update(players[1].SendEnemyResult);
+            if (players[0].hasLost()) { // depends on the enemy
+                System.out.println("Game Over \nPlayer" + players[1].name + "has won!");
+                break;
+            }
+        }
     }
 }

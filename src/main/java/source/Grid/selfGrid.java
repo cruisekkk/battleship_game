@@ -95,4 +95,14 @@ public class selfGrid extends Grid {
         }
         return false;
     }
+
+    public boolean isAllFall(){
+        for (Ship ship: this.shipList){
+            if (!ship.isFall()){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -65,4 +65,9 @@ public class Player {
         ans += " " + c;
         return ans;
     }
+
+    public boolean hasLost(){
+        return this.selfGrid.isAllFall();
+    }
+
 }
