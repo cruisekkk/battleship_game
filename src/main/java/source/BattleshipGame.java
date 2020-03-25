@@ -35,13 +35,25 @@ public class BattleshipGame {
         phase = phase.updateToShipSetting();
         // in the shipSetting
         for (Player player: players) {
-            while(!player.isFullSetted()){
+            //while(!player.isFullSetted()){
                 phase.printPrompt(player);
                 phase.askUser(player); // where do you want to put
-            }
+            //}
         }
 
-        //System.out.println(playerA.displaySelf());
-        //System.out.println(playerB.displaySelf());
+        // transfer to fighting phase
+        phase = phase.updateToShipFighting();
+        // set mutual name
+        players[0].setEnemyName(players[1].name);
+        players[1].setEnemyName(players[0].name);
+        // set mutual Grid
+        //players[0].setEnemyGrid(players[1].selfGrid);
+        //players[1].setEnemyGrid(players[0].selfGrid);
+
+
+        //while(1){
+        phase.printPrompt(players[0]);
+
+        //}
     }
 }

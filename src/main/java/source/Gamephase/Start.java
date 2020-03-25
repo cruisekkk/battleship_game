@@ -22,4 +22,9 @@ class Start implements GamePhase{
         return new ShipSetting();
     }
 
+    @Override
+    public GamePhase updateToShipFighting(){
+        return new ShipFighting();
+    }
+
 }
