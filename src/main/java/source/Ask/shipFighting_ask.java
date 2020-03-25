@@ -20,7 +20,27 @@ class shipFighting_ask implements Ask {
 
         int row = (int)(s.toLowerCase().charAt(0) - 'a');
         int column = (int) (s.charAt(1) - '0');
-        //x.fireShip(row, column, direction); // fire at
+
+        if (x.findBlock(row, column).equals('s') ){
+            x.fireAt(row, column, new Character('s')); // fire at
+            System.out.println("You hit a submarine!");
+        }
+        else if (x.findBlock(row, column).equals('b') ){
+            x.fireAt(row, column, new Character('b')); // fire at
+            System.out.println("You hit a battleship!");
+        }
+        else if (x.findBlock(row, column).equals('c') ){
+            x.fireAt(row, column, new Character('c')); // fire at
+            System.out.println("You hit a carrier!");
+        }
+        else if (x.findBlock(row, column).equals('d') ){
+            x.fireAt(row, column, new Character('d')); // fire at
+            System.out.println("You hit a destroyer!");
+        }
+        else if (x.findBlock(row, column).equals(' ') ){
+            x.fireAt(row, column, new Character('X')); // fire at
+            System.out.println("You missed!");
+        }
     }
 
     @Override

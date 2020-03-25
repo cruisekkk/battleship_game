@@ -17,4 +17,5 @@ public abstract class Grid {
     }
 
     public abstract String show();
+
 }

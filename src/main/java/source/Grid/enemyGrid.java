@@ -21,10 +21,22 @@ public class enemyGrid extends Grid{
         }
     }
 
-
     @Override
     public String show(){
         return "s";
+    }
+
+    public Character findBlock(int row, int column){
+        return unHidMap[row][column];
+    }
+
+    public void fireAt(int row, int column, Character sign){
+        // change the hidden map
+        this.map[row][column] = sign;
+        // change the real enemy's map, update later
+        if (sign.equals('s') || sign.equals('d') || sign.equals('b') || sign.equals('c')){
+            this.unHidMap[row][column] = new Character('*');
+        }
     }
 
 }

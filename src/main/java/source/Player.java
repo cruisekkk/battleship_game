@@ -70,4 +70,12 @@ public class Player {
         return this.selfGrid.isAllFall();
     }
 
+    public Character findBlock(int row, int column){
+        return this.enemyGrid.findBlock(row, column); // need to find what is going on about the real map of the enemy
+    }
+
+    public void fireAt(int row, int column, Character sign){
+        this.enemyGrid.fireAt(row, column, sign);
+    }
+
 }
