@@ -64,7 +64,6 @@ public class selfGrid extends Grid {
         return ans;
     }
 
-    // 有问题
     public Character[] getConflict(int row, int column, char direction) {
         Ship ship = new Submarine(row, column, direction);
         if (shipNum >= 2 && shipNum < 5) {
@@ -103,6 +102,31 @@ public class selfGrid extends Grid {
             }
         }
         return true;
+    }
+
+    public int findShip(int row, int column){
+        for (int i = 0; i < this.shipNum; i++){
+            if (shipList[i].hasBlock(row, column)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+    public void updateFire(int[] fireLocation){
+        int row = fireLocation[0];
+        int column = fireLocation[0];
+
+        // no ship
+        if (findShip(row, column) == -1){
+            return;
+        }
+
+        // find the ship, fire
+        int shipNumber = findShip(row, column);
+        this.map[row][column] = new Character('*');
+        this.shipList[shipNumber].updateFire(row, column);
     }
 
 

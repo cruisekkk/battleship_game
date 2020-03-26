@@ -43,4 +43,5 @@ class Battleship extends Ship {
             this.shipMap[this.route[i][0]][this.route[i][1]] = 'b';
         }
     }
+
 }

@@ -5,6 +5,7 @@ public class Player {
     public Character enemyName;
     public selfGrid selfGrid;
     public enemyGrid enemyGrid;
+    public int[] firedLocation;
 
     Player(String name){
         this.name = new Character(name.charAt(0));
@@ -76,6 +77,18 @@ public class Player {
 
     public void fireAt(int row, int column, Character sign){
         this.enemyGrid.fireAt(row, column, sign);
+    }
+
+    public void setFiredLocation(int row, int column){
+        this.firedLocation = new int[] {row, column};
+    }
+
+    public int[] getFiredLocation(){
+        return this.firedLocation;
+    }
+
+    public void updateFire(int[] fireLocation){
+        this.selfGrid.updateFire(fireLocation);
     }
 
 }

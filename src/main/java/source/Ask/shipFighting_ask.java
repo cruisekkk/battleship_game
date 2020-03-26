@@ -21,6 +21,7 @@ class shipFighting_ask implements Ask {
         int row = (int)(s.toLowerCase().charAt(0) - 'a');
         int column = (int) (s.charAt(1) - '0');
 
+        // process the data
         if (x.findBlock(row, column).equals('s') ){
             x.fireAt(row, column, new Character('s')); // fire at
             System.out.println("You hit a submarine!");
@@ -41,6 +42,8 @@ class shipFighting_ask implements Ask {
             x.fireAt(row, column, new Character('X')); // fire at
             System.out.println("You missed!");
         }
+
+        x.setFiredLocation(row, column);
     }
 
     @Override

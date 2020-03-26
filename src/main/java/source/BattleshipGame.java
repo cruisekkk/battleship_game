@@ -54,7 +54,8 @@ public class BattleshipGame {
             phase.printPrompt(players[0]);
             phase.askUser(players[0]); // change the enemy
 
-            //players[1].update(players[0].SendEnemyResult);
+            players[1].updateFire(players[0].getFiredLocation());
+
             if (players[1].hasLost()) { // depends on the self
                 System.out.println("Game Over \nPlayer" + players[0].name + "has won!");
                 break;
@@ -62,7 +63,7 @@ public class BattleshipGame {
             phase.printPrompt(players[1]);
             phase.askUser(players[1]);
 
-            //players[0].update(players[1].SendEnemyResult);
+            players[0].updateFire(players[1].getFiredLocation());
             if (players[0].hasLost()) { // depends on the enemy
                 System.out.println("Game Over \nPlayer" + players[1].name + "has won!");
                 break;
