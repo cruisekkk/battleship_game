@@ -10,6 +10,7 @@ public class Player {
     Player(String name){
         this.name = new Character(name.charAt(0));
         this.selfGrid = new selfGrid();
+        this.firedLocation = new int[] {-1,-1};
     }
 
     public String getShipToSet() {
@@ -80,7 +81,8 @@ public class Player {
     }
 
     public void setFiredLocation(int row, int column){
-        this.firedLocation = new int[] {row, column};
+        this.firedLocation[0] = row;
+        this.firedLocation[1] = column;
     }
 
     public int[] getFiredLocation(){
@@ -88,6 +90,7 @@ public class Player {
     }
 
     public void updateFire(int[] fireLocation){
+        System.out.println("B is going to update fire");
         this.selfGrid.updateFire(fireLocation);
     }
 

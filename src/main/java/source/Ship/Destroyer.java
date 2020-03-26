@@ -11,11 +11,6 @@ class Destroyer extends Ship {
     }
 
     @Override
-    boolean isFall(){
-        return false;
-    }
-
-    @Override
     void initRoute(char direction){
         if (direction == 'h'){
             this.route = new int[][] {{0,0}, {0,1}, {0,2}};

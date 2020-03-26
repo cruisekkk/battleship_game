@@ -44,6 +44,7 @@ class shipFighting_ask implements Ask {
         }
 
         x.setFiredLocation(row, column);
+        //System.out.println("setFiredLocation: " + row + ", " + column);
     }
 
     @Override

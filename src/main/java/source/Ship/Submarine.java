@@ -10,10 +10,6 @@ class Submarine extends Ship{
         initMap();
     }
 
-    @Override
-    boolean isFall(){
-        return false;
-    }
 
     @Override
     void initRoute(char direction){
