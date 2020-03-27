@@ -31,9 +31,11 @@ class shipFighting_ask implements Ask {
                 break;
             }
             if (s.toLowerCase().charAt(0) == 'm'){
+
                 break;
             }
             if (s.toLowerCase().charAt(0) == 's'){
+                //sonarAction(x);
                 break;
             }
 
@@ -116,6 +118,56 @@ class shipFighting_ask implements Ask {
             return false;
         }
         return true;
+    }
+
+
+    @Override
+    public void sonarAction(Player x){
+    /*    int[][] route = new int[][] {{-3,0}, {-2,-1}, {-2,0}, {-2,1}, {-1,-2}, {-1,-1}, {-1,0}, {-1,1}, {-1,2}, {0,-3}, {0,-2}, {0,-1},{0,0},
+                {0,1}, {0,2}, {0,3}, {1,-2}, {1,-1}, {1,0}, {1,1}, {1,2}, {2,-1}, {2,0}, {2,1}, {3,0}};
+        // visit the enemyGrid unHidMap
+        String s;
+        int check = 0;
+
+        do {
+            System.out.println("Player " + x.name + ", where do you want to use Sonar?");
+            s = input.reader.nextLine();
+            System.out.println(s);
+        } while (!ValidInputStr(s, x));
+
+        int row = (int)(s.toLowerCase().charAt(0) - 'a');
+        int column = (int) (s.charAt(1) - '0');
+
+        int sNum = 0;
+        int dNum = 0;
+        int bNum = 0;
+        int cNum = 0;
+
+        for (int[] location: route){
+            if (row + location[0] >= 0 && row + location[0] < 10){
+                if (column + location[1] >= 0 && column + location[1] < 10){
+                    int newRow = row + location[0];
+                    int newColumn = column + location[1];
+                    if (x.enemyGrid.unHidMap[newRow][newColumn].equals('s')){
+                        sNum++;
+                    }
+                    if (x.enemyGrid.unHidMap[newRow][newColumn].equals('d')){
+                        dNum++;
+                    }
+                    if (x.enemyGrid.unHidMap[newRow][newColumn].equals('b')){
+                        bNum++;
+                    }
+                    if (x.enemyGrid.unHidMap[newRow][newColumn].equals('c')){
+                        cNum++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Submarines occupy " + sNum + " squares");
+        System.out.println("Destroyers occupy " + dNum + " squares");
+        System.out.println("Battleships occupy " + bNum + " squares");
+        System.out.println("Carriers occupy " + cNum + " squares"); */
     }
 
 }

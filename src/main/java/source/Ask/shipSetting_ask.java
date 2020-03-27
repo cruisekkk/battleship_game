@@ -90,4 +90,9 @@ class shipSetting_ask implements Ask {
     public void fireAction(Player x){
 
     }
+
+    @Override
+    public void sonarAction(Player x){
+
+    }
 }

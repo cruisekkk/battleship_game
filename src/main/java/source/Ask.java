@@ -14,4 +14,5 @@ interface Ask {
     boolean ValidInputShip(String s, Player x);
 
     void fireAction(Player x);
+    void sonarAction(Player x);
 }
