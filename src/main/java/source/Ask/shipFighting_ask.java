@@ -35,11 +35,13 @@ class shipFighting_ask implements Ask {
                 break;
             }
             if (s.toLowerCase().charAt(0) == 's'){
-                //sonarAction(x);
+                if (x.sonarRemain <= 0) {
+                    System.out.println("There is no token for you to use Sonar, remember you can only use it once!");
+                    continue;
+                }
+                sonarAction(x);
                 break;
             }
-
-            check = 1;
         } while (true);
 
     }
@@ -123,7 +125,7 @@ class shipFighting_ask implements Ask {
 
     @Override
     public void sonarAction(Player x){
-    /*    int[][] route = new int[][] {{-3,0}, {-2,-1}, {-2,0}, {-2,1}, {-1,-2}, {-1,-1}, {-1,0}, {-1,1}, {-1,2}, {0,-3}, {0,-2}, {0,-1},{0,0},
+        int[][] route = new int[][] {{-3,0}, {-2,-1}, {-2,0}, {-2,1}, {-1,-2}, {-1,-1}, {-1,0}, {-1,1}, {-1,2}, {0,-3}, {0,-2}, {0,-1},{0,0},
                 {0,1}, {0,2}, {0,3}, {1,-2}, {1,-1}, {1,0}, {1,1}, {1,2}, {2,-1}, {2,0}, {2,1}, {3,0}};
         // visit the enemyGrid unHidMap
         String s;
@@ -167,7 +169,8 @@ class shipFighting_ask implements Ask {
         System.out.println("Submarines occupy " + sNum + " squares");
         System.out.println("Destroyers occupy " + dNum + " squares");
         System.out.println("Battleships occupy " + bNum + " squares");
-        System.out.println("Carriers occupy " + cNum + " squares"); */
+        System.out.println("Carriers occupy " + cNum + " squares");
+        x.sonarRemainNum--;
     }
 
 }
