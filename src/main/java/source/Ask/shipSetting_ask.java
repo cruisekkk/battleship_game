@@ -59,8 +59,15 @@ class shipSetting_ask implements Ask {
         int column = (int) (s.charAt(1) - '0');
         char direction = s.toLowerCase().charAt(2);
         Character unblanksig = new Character('x');
+        Character outOfIndex = new Character('o');
 
         Character[] conflictLoc = x.getGridConflict(row, column, direction);
+
+        if (conflictLoc[1].equals(outOfIndex)){
+            System.out.println("Out of index, be careful");
+            System.out.println("Please input the place again");
+            return false;
+        }
         if (!conflictLoc[1].equals(unblanksig)){
             System.out.println("Conflict on {" + conflictLoc[0].toString() + "," +  conflictLoc[1].toString() + "}");
             System.out.println("Please input the place again");

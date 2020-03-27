@@ -90,7 +90,11 @@ public class selfGrid extends Grid {
         for (int i = 0; i < ship.blocks; ++i) {
             int searchRow = ship.pivot[0] + ship.route[i][0];
             int searchColumn = ship.pivot[1] + ship.route[i][1];
-            System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+            //System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+
+            if (searchRow >= 20 || searchColumn >= 10){
+                return new Character[]{'o', 'o'};
+            }
             if (!map[searchRow][searchColumn].equals(blank)) {
                 return new Character[]{(char) (row + 'A'), (char) (column + '0')};
             }
