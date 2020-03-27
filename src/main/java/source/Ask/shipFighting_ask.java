@@ -15,11 +15,11 @@ class shipFighting_ask implements Ask {
             System.out.println("Player " + x.name + " where do you want to fire ?");
             s = input.reader.nextLine();
             System.out.println(s);
-            if (check == 1 && ValidInputStr(s) && !ValidInputShip(s, x)){
+            if (check == 1 && ValidInputStr(s, x) && !ValidInputShip(s, x)){
                 System.out.println("You shouldn't put here, The place is filled ");
             }
             check = 1;
-        } while (!ValidInputStr(s) || !ValidInputShip(s, x));
+        } while (!ValidInputStr(s, x) || !ValidInputShip(s, x));
 
         int row = (int)(s.toLowerCase().charAt(0) - 'a');
         int column = (int) (s.charAt(1) - '0');
@@ -52,7 +52,7 @@ class shipFighting_ask implements Ask {
 
     @Override
     // the proper format is like A0, b9.. only two characters
-    public boolean ValidInputStr(String s){
+    public boolean ValidInputStr(String s, Player x){
         if (s.length() != 2){
             System.out.println("You should only put here 2 characters: row char, column number");
             return false;

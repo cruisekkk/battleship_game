@@ -9,7 +9,7 @@ interface Ask {
     // print would ask the user and give the proper response in the terminal
     void print(Player x);
     // this validate the input string
-    boolean ValidInputStr(String s);
+    boolean ValidInputStr(String s, Player x);
     // this validate the logic of player's choice
     boolean ValidInputShip(String s, Player x);
 }

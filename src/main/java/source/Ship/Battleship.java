@@ -1,6 +1,8 @@
 package source;
 // will show 'b' in the map
 // has four blocks
+
+// version 2
 class Battleship extends Ship {
     Battleship(int row, int column, char direction) {
         this.pivot = new int[]{row, column};
@@ -13,12 +15,20 @@ class Battleship extends Ship {
 
     @Override
     void initRoute(char direction){
-        if (direction == 'h'){
-            this.route = new int[][] {{0,0}, {0,1}, {0,2}, {0,3}};
+        if (direction == 'u'){
+            this.route = new int[][] {{1,0}, {1,1}, {0,1}, {1,2}};
         }
 
-        if (direction == 'v'){
-            this.route = new int[][] {{0,0}, {1,0}, {2,0}, {3,0}};
+        if (direction == 'l'){
+            this.route = new int[][] {{1,0}, {0,1}, {1,1}, {2,1}};
+        }
+
+        if (direction == 'r'){
+            this.route = new int[][] {{0,0}, {1,0}, {2,0}, {1,1}};
+        }
+
+        if (direction == 'd'){
+            this.route = new int[][] {{0,0}, {0,1}, {0,2}, {1,1}};
         }
     }
 

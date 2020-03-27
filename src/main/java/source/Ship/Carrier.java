@@ -1,6 +1,8 @@
 package source;
 // will show 'c' in the map
 // has six blocks
+
+// version 2
 class Carrier extends Ship {
     Carrier(int row, int column, char direction) {
         this.pivot = new int[]{row, column};
@@ -14,12 +16,20 @@ class Carrier extends Ship {
 
     @Override
     void initRoute(char direction){
-        if (direction == 'h'){
-            this.route = new int[][] {{0,0}, {0,1}, {0,2}, {0,3}, {0,4}, {0,5}};
+        if (direction == 'u'){
+            this.route = new int[][] {{0,0}, {1,0}, {2,0}, {2,1}, {3,1}, {4,1}};
         }
 
-        if (direction == 'v'){
-            this.route = new int[][] {{0,0}, {1,0}, {2,0}, {3,0}, {4,0}, {5,0}};
+        if (direction == 'r'){
+            this.route = new int[][] {{1,0}, {1,1}, {1,2}, {0,2}, {0,3}, {0,4}};
+        }
+
+        if (direction == 'd'){
+            this.route = new int[][] {{2,0}, {3,0}, {4,0}, {0,1}, {1,1}, {2,1}};
+        }
+
+        if (direction == 'l'){
+            this.route = new int[][] {{0,0}, {0,1}, {0,2}, {1,2}, {1,3}, {1,4}};
         }
     }
 

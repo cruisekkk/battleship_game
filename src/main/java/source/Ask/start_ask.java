@@ -14,7 +14,7 @@ class start_ask implements Ask {
             System.out.println("[yes/no] Enter: ");
             s = input.reader.nextLine();
             System.out.println(s);
-        } while (! ValidInputStr(s));
+        } while (! ValidInputStr(s, x));
 
         if (s.toLowerCase().equals("no")){
             System.exit(0);
@@ -22,7 +22,7 @@ class start_ask implements Ask {
     }
     @Override
     // the only two valid string is yes and no
-    public boolean ValidInputStr(String s){
+    public boolean ValidInputStr(String s, Player x){
         return (s.toLowerCase().equals("yes") || s.toLowerCase().equals("no"));
     }
 

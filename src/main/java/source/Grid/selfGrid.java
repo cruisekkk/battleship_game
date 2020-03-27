@@ -76,7 +76,11 @@ public class selfGrid extends Grid {
     // if conflict, return the real conflicted location
     // if not, return {x,x}
     public Character[] getConflict(int row, int column, char direction) {
-        Ship ship = new Submarine(row, column, direction);
+        // this is a temp ship to detect conflict
+        Ship ship = new Submarine(row, column, 'h');
+        if (shipNum < 2) {
+            ship = new Submarine(row, column, direction);
+        }
         if (shipNum >= 2 && shipNum < 5) {
             ship = new Destroyer(row, column, direction);
         }
@@ -90,7 +94,10 @@ public class selfGrid extends Grid {
         for (int i = 0; i < ship.blocks; ++i) {
             int searchRow = ship.pivot[0] + ship.route[i][0];
             int searchColumn = ship.pivot[1] + ship.route[i][1];
-            System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+            //System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+            if (searchRow >= 20 || searchColumn >= 10){
+                return new Character[]{'o', 'o'};
+            }
             if (!map[searchRow][searchColumn].equals(blank)) {
                 return new Character[]{(char) (row + 'A'), (char) (column + '0')};
             }
