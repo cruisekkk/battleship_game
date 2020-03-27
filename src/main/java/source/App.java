@@ -5,6 +5,7 @@ package source;
 import java.util.Scanner;
 import java.io.*;
 
+// test entry
 public class App {
     public String getGreeting() {
         return "";
