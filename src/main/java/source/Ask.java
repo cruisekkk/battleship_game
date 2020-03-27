@@ -12,4 +12,6 @@ interface Ask {
     boolean ValidInputStr(String s, Player x);
     // this validate the logic of player's choice
     boolean ValidInputShip(String s, Player x);
+
+    void fireAction(Player x);
 }

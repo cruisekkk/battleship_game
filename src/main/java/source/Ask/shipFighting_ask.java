@@ -12,7 +12,43 @@ class shipFighting_ask implements Ask {
         int check = 0;
 
         do {
-            System.out.println("Player " + x.name + " where do you want to fire ?");
+            if (check == 1){
+                System.out.println("You should only type one character F, M, or S");
+            }
+            System.out.println("Possible actions for Player " + x.name + ":");
+            System.out.println(" F Fire at a square");
+            System.out.println(" M Move a ship to another square (" + x.moveRemainNum + " remaining)");
+            System.out.println(" S Sonar scan (" + x.sonarRemainNum + " remaining)");
+            System.out.println("Player " + x.name + ", what would you like to do?");
+            s = input.reader.nextLine();
+            System.out.println(s);
+            if (s.length() != 1){
+                check = 1;
+                continue;
+            }
+            if (s.toLowerCase().charAt(0) == 'f'){
+                fireAction(x);
+                break;
+            }
+            if (s.toLowerCase().charAt(0) == 'm'){
+                break;
+            }
+            if (s.toLowerCase().charAt(0) == 's'){
+                break;
+            }
+
+            check = 1;
+        } while (true);
+
+    }
+
+    @Override
+    public void fireAction(Player x){
+        String s;
+        int check = 0;
+
+        do {
+            System.out.println("Player " + x.name + ", where do you want to fire?");
             s = input.reader.nextLine();
             System.out.println(s);
             if (check == 1 && ValidInputStr(s, x) && !ValidInputShip(s, x)){
@@ -48,6 +84,7 @@ class shipFighting_ask implements Ask {
 
         x.setFiredLocation(row, column);
         //System.out.println("setFiredLocation: " + row + ", " + column);
+
     }
 
     @Override

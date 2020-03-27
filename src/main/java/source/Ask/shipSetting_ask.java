@@ -85,4 +85,9 @@ class shipSetting_ask implements Ask {
 
         return true;
     }
+
+    @Override
+    public void fireAction(Player x){
+
+    }
 }

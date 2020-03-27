@@ -13,11 +13,17 @@ public class Player {
     // temporary variable, storing the location of the current firing action
     public int[] firedLocation;
 
+    public int moveRemainNum;
+
+    public int sonarRemainNum;
+
     // initialize the self grid, name
     Player(String name){
         this.name = new Character(name.charAt(0));
         this.selfGrid = new selfGrid();
         this.firedLocation = new int[] {-1,-1};
+        this.moveRemainNum = 2;
+        this.sonarRemainNum = 1;
     }
 
     // the following methods are all wrapper methods to implement the diffrent operations to selfGrid or enemyGrid

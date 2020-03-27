@@ -31,4 +31,9 @@ class start_ask implements Ask {
     public boolean ValidInputShip(String s, Player x){
         return true;
     }
+
+    @Override
+    public void fireAction(Player x){
+
+    }
 }
