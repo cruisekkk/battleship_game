@@ -5,7 +5,7 @@ package source;
 import java.util.Scanner;
 import java.io.*;
 
-// test entry
+// test entry: a new branch
 public class App {
     public String getGreeting() {
         return "";
