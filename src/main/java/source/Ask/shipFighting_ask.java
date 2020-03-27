@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 class shipFighting_ask implements Ask {
     @Override
+    // in the shipfighting phase
+    // the input should be the ship locaiton
+    // in this print method: it will validate the input, give the result of fire, store the fire location
     public void print(Player x) {
         String s;
         int check = 0;
@@ -48,6 +51,7 @@ class shipFighting_ask implements Ask {
     }
 
     @Override
+    // the proper format is like A0, b9.. only two characters
     public boolean ValidInputStr(String s){
         if (s.length() != 2){
             System.out.println("You should only put here 2 characters: row char, column number");
@@ -65,6 +69,7 @@ class shipFighting_ask implements Ask {
     }
 
     @Override
+    // to check if the location is already fired by the player
     public boolean ValidInputShip(String s, Player x){
         int row = (int)(s.toLowerCase().charAt(0) - 'a');
         int column = (int) (s.charAt(1) - '0');

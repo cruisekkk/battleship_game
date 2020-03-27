@@ -2,6 +2,11 @@ package source;
 
 class shipSetting_prompt implements Prompt {
     @Override
+    // the prompt in the shipSetting phase
+    // in this phase, the prompt would be firstly display the current ocean of the player
+    // then give some helpful information about how to set
+    // It would invoke the displaySelf() function in the player
+    // use the player's name
     public void print(Player x){
         String n = "Current Ocean:\n";
         n += x.displaySelf();

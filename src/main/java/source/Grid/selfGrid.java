@@ -1,10 +1,16 @@
 package source;
 
+// a sub class of Grid
+// maintain the map data during shipsettin and ship fighting
 public class selfGrid extends Grid {
+    // use the same initializer from Grid
+    // generate an empty map
     selfGrid(){
         super();
     }
 
+    // initialize the following ships in order
+    // return the required ship type to IO module
     public String getShipToSet() {
         if (shipNum < 2) {
             return "Submarine";
@@ -15,12 +21,11 @@ public class selfGrid extends Grid {
         if (shipNum >= 5 && shipNum < 8) {
             return "Battleship";
         }
-        //if (shipNum >= 8 && shipNum < 10) {
         return "Carrier";
-        //}
     }
 
-    void setShip(int row, int column, char direction) { // From ask module
+    // Receive the location from ask module, initialize the proper ship in the location
+    void setShip(int row, int column, char direction) {
         // init
         if (shipNum < 2) {
             shipList[shipNum] = new Submarine(row, column, direction);
@@ -38,7 +43,8 @@ public class selfGrid extends Grid {
         drawShipOnMap(shipList[shipNum]);
         shipNum = shipNum + 1;
     }
-    // setting phase
+
+    // update the ship's location on the map in the setting phase
     void drawShipOnMap(Ship ship) {
         for (int i = 0; i < ship.blocks; ++i) {
             map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ship.name;
@@ -46,6 +52,8 @@ public class selfGrid extends Grid {
     }
 
     @Override
+    // display the map before the player input
+    // connected to the print prompt module
     public String show() {
         String ans = "  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  \n";
         for (int i = 0; i < 20; i++) {
@@ -64,6 +72,9 @@ public class selfGrid extends Grid {
         return ans;
     }
 
+    // determine if there is a conflict between the planned location and map
+    // if conflict, return the real conflicted location
+    // if not, return {x,x}
     public Character[] getConflict(int row, int column, char direction) {
         Ship ship = new Submarine(row, column, direction);
         if (shipNum >= 2 && shipNum < 5) {
@@ -88,6 +99,7 @@ public class selfGrid extends Grid {
         return new Character[]{'x', 'x'};
     }
 
+    // determine if the ship is full setted as a sign to end setting phase
     public boolean isFull() {
         if (this.shipNum == 10) {
             return true;
@@ -95,6 +107,7 @@ public class selfGrid extends Grid {
         return false;
     }
 
+    // determine if the ships in the list is all "fall", meaning killed by the enemy
     public boolean isAllFall(){
         //for (Ship ship: this.shipList){
         for (int i = 0; i < this.shipNum; i++){
@@ -105,6 +118,9 @@ public class selfGrid extends Grid {
         return true;
     }
 
+    // a helper funciton for updateFire()
+    // find the ship(exact object) who has that block
+    // the input is the block's location
     public int findShip(int row, int column){
         for (int i = 0; i < this.shipNum; i++){
             //System.out.println(this.shipNum);
@@ -115,6 +131,8 @@ public class selfGrid extends Grid {
         return -1;
     }
 
+    // receive the fired location by IO module(passing by the enemy)
+    // update to the map and the ship
     public void updateFire(int[] fireLocation){
         int row = fireLocation[0];
         int column = fireLocation[1];

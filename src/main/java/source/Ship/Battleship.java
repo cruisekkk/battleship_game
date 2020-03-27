@@ -1,5 +1,6 @@
 package source;
-
+// will show 'b' in the map
+// has four blocks
 class Battleship extends Ship {
     Battleship(int row, int column, char direction) {
         this.pivot = new int[]{row, column};

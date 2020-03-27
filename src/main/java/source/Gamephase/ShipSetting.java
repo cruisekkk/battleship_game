@@ -1,5 +1,8 @@
 package source;
 
+// in the shipSettingphase
+// invoke the shipSetting prompt class and shipSetting ask class
+// execute the print method of them
 class ShipSetting implements GamePhase {
     Prompt prompt;
     Ask ask;

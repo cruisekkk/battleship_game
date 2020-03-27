@@ -1,5 +1,8 @@
 package source;
 
+// in the shipFighting phase
+// invoke the shipFighting prompt class and shipFighting ask class
+// execute the print method of them
 class ShipFighting implements GamePhase{
     Prompt prompt;
     Ask ask;

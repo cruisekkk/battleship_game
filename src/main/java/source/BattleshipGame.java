@@ -14,10 +14,12 @@ public class BattleshipGame {
         CreatePlayers();
     }
 
+    // initialize the phase object : a start phase
     void CreateGamePhase() {
         phase = new Start();
     }
 
+    // create two players
     void CreatePlayers() {
         playerA = new Player("A");
         playerB = new Player("B");
@@ -50,6 +52,7 @@ public class BattleshipGame {
         players[0].setEnemyGrid(players[1].selfGrid);
         players[1].setEnemyGrid(players[0].selfGrid);
 
+        // the logic loop in the fighting phase
         while (true) {
             phase.printPrompt(players[0]);
             phase.askUser(players[0]); // change the enemy

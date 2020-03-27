@@ -1,4 +1,6 @@
 package source;
+// will show 'd' in the map
+// has three blocks
 
 class Destroyer extends Ship {
     Destroyer(int row, int column, char direction) {

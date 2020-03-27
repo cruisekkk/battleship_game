@@ -1,6 +1,9 @@
 package source;
 //package source.Gamephase;
 
+// in the start phase
+// invoke the start prompt class and start ask class
+// execute the print method of them
 class Start implements GamePhase{
     Prompt prompt;
     Ask ask;

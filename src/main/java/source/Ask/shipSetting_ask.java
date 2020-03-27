@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 class shipSetting_ask implements Ask {
     @Override
+    // in the shipsetting phase
+    // the input should be the ship locaiton and direction
     public void print(Player x) {
         String s;
         int check = 0;
@@ -25,6 +27,8 @@ class shipSetting_ask implements Ask {
     }
 
     @Override
+    // tolerate the upper or lower case
+    // can just handle 3 characters
     public boolean ValidInputStr(String s){
         if (s.length() != 3){
             System.out.println("You should only put here 3 characters: row char, column number, direction");
@@ -47,6 +51,9 @@ class shipSetting_ask implements Ask {
     }
 
     @Override
+    // two parameters: input, player
+    // use the input to visit the player's data structure
+    // check if there is conflict of the existing ships on the map
     public boolean ValidInputShip(String s, Player x)
     {   int row = (int)(s.toLowerCase().charAt(0) - 'a');
         int column = (int) (s.charAt(1) - '0');

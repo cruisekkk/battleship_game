@@ -1,5 +1,6 @@
 package source;
-
+// will show 's' in the map
+// has two blocks
 class Submarine extends Ship{
     Submarine(int row, int column, char direction){
         this.pivot = new int[]{row, column};
