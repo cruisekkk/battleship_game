@@ -10,7 +10,6 @@ class Submarine extends Ship{
         initMap();
     }
 
-
     @Override
     void initRoute(char direction){
         if (direction == 'h'){

@@ -90,7 +90,7 @@ public class Player {
     }
 
     public void updateFire(int[] fireLocation){
-        System.out.println("B is going to update fire");
+        //System.out.println("B is going to update fire");
         this.selfGrid.updateFire(fireLocation);
     }
 

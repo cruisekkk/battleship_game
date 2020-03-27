@@ -12,11 +12,11 @@ abstract class Ship{
     abstract void initMap();
 
     boolean hasBlock(int row, int column){
-        System.out.println("the row and column is " + row + ", " + column);
-        System.out.println(this.blocks + "blocks");
+        //System.out.println("the row and column is " + row + ", " + column);
+        //System.out.println(this.blocks + "blocks");
         for (int i = 0; i < this.blocks; ++i) {
-            System.out.println("the route is "+ route[i][0] + ", " + route[i][1]);
-            System.out.println("the pivot is "+ pivot[0] + ", " + pivot[1]);
+            //System.out.println("the route is "+ route[i][0] + ", " + route[i][1]);
+            //System.out.println("the pivot is "+ pivot[0] + ", " + pivot[1]);
             if (this.route[i][0] + this.pivot[0] == row){
                 if (this.route[i][1] + this.pivot[1] == column){
                     return true;

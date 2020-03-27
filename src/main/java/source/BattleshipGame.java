@@ -35,10 +35,10 @@ public class BattleshipGame {
         phase = phase.updateToShipSetting();
         // in the shipSetting
         for (Player player : players) {
-            //while(!player.isFullSetted()){
+            while(!player.isFullSetted()){
             phase.printPrompt(player);
             phase.askUser(player); // where do you want to put
-            //}
+            }
         }
 
         // transfer to fighting phase
@@ -57,7 +57,7 @@ public class BattleshipGame {
             players[1].updateFire(players[0].getFiredLocation());
 
             if (players[1].hasLost()) { // depends on the self
-                System.out.println("Game Over \nPlayer" + players[0].name + "has won!");
+                System.out.println("Game Over \nPlayer " + players[0].name + " has won!");
                 break;
             }
             phase.printPrompt(players[1]);
@@ -65,7 +65,7 @@ public class BattleshipGame {
 
             players[0].updateFire(players[1].getFiredLocation());
             if (players[0].hasLost()) { // depends on the enemy
-                System.out.println("Game Over \nPlayer" + players[1].name + "has won!");
+                System.out.println("Game Over \nPlayer " + players[1].name + " has won!");
                 break;
             }
         }

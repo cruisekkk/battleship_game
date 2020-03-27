@@ -107,7 +107,7 @@ public class selfGrid extends Grid {
 
     public int findShip(int row, int column){
         for (int i = 0; i < this.shipNum; i++){
-            System.out.println(this.shipNum);
+            //System.out.println(this.shipNum);
             if (shipList[i].hasBlock(row, column)){
                 return i;
             }
@@ -118,10 +118,10 @@ public class selfGrid extends Grid {
     public void updateFire(int[] fireLocation){
         int row = fireLocation[0];
         int column = fireLocation[1];
-        System.out.println("the fire location in B is " + row + ", " + column);
+        //System.out.println("the fire location in B is " + row + ", " + column);
         // no ship
         if (findShip(row, column) == -1){
-            System.out.println("there is no ship");
+            //System.out.println("there is no ship");
             return;
         }
 

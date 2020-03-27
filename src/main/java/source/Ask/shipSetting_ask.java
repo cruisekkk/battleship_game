@@ -12,10 +12,10 @@ class shipSetting_ask implements Ask {
             System.out.println("Player " + x.name + " where do you want to place a " + x.getShipToSet());
             s = input.reader.nextLine();
             System.out.println(s);
-            if (check == 1 && ValidInputStr(s) && !ValidInputShip(s, x)){
-                System.out.println("You shouldn't put here, The place is filled ");
-            }
-            check = 1;
+            //if (check == 1 && ValidInputStr(s) && !ValidInputShip(s, x)){
+            //    System.out.println("You shouldn't put here, The place is filled ");
+            //}
+            //check = 1;
         } while (!ValidInputStr(s) || !ValidInputShip(s, x));
 
         int row = (int)(s.toLowerCase().charAt(0) - 'a');
