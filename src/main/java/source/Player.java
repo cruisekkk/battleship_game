@@ -44,6 +44,10 @@ public class Player {
         return selfGrid.getConflict(row, column, direction);
     }
 
+    public Character[] getGridConflict(int row, int column, char direction, int shipNum){
+        return selfGrid.getConflict(row, column, direction, shipNum);
+    }
+
     public String displaySelf(){
         return selfGrid.show();
     }
@@ -115,4 +119,17 @@ public class Player {
         this.selfGrid.updateFire(fireLocation);
     }
 
+    public void displayMoveShips(){
+        this.selfGrid.displayAliveShips();
+    }
+
+    public int findShip(int row, int column){
+        return this.selfGrid.findShip(row, column);
+    }
+
+    public int findShip(String s){
+        int row = (int)(s.toLowerCase().charAt(0) - 'a');
+        int column = (int) (s.charAt(1) - '0');
+        return this.selfGrid.findShip(row, column);
+    }
 }

@@ -41,5 +41,10 @@ class start_ask implements Ask {
     public void sonarAction(Player x){
 
     }
-
+    @Override
+    public void moveAction(Player x){}
+    @Override
+    public boolean validMoveinput(String s, int shipNum){ return true;}
+    @Override
+    public boolean validMoveLocation(Player x, String s, int shipNum){return true;}
 }

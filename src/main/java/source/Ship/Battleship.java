@@ -8,6 +8,7 @@ class Battleship extends Ship {
         this.pivot = new int[]{row, column};
         this.direction = direction;
         this.blocks = 4;
+        this.type = new String("Battleship");
         this.name = new Character('b');
         initRoute(direction);
         initMap();

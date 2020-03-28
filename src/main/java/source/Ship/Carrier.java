@@ -9,6 +9,7 @@ class Carrier extends Ship {
         this.direction = direction;
         this.blocks = 6;
         this.name = new Character('c');
+        this.type = new String("Carrier");
         initRoute(direction);
         initMap();
     }

@@ -91,6 +91,7 @@ public class selfGrid extends Grid {
             ship = new Carrier(row, column, direction);
         }
         Character blank = new Character(' ');
+        Character miss = new Character('X');
         for (int i = 0; i < ship.blocks; ++i) {
             int searchRow = ship.pivot[0] + ship.route[i][0];
             int searchColumn = ship.pivot[1] + ship.route[i][1];
@@ -98,13 +99,47 @@ public class selfGrid extends Grid {
             if (searchRow >= 20 || searchColumn >= 10){
                 return new Character[]{'o', 'o'};
             }
-            if (!map[searchRow][searchColumn].equals(blank)) {
+            if (!map[searchRow][searchColumn].equals(blank) && !map[searchRow][searchColumn].equals(miss)) {
                 return new Character[]{(char) (row + 'A'), (char) (column + '0')};
             }
         }
 
         return new Character[]{'x', 'x'};
     }
+
+
+    public Character[] getConflict(int row, int column, char direction, int shipNum) {
+        // this is a temp ship to detect conflict
+        Ship ship = new Submarine(row, column, 'h');
+        if (shipNum < 2) {
+            ship = new Submarine(row, column, direction);
+        }
+        if (shipNum >= 2 && shipNum < 5) {
+            ship = new Destroyer(row, column, direction);
+        }
+        if (shipNum >= 5 && shipNum < 8) {
+            ship = new Battleship(row, column, direction);
+        }
+        if (shipNum >= 8 && shipNum < 10) {
+            ship = new Carrier(row, column, direction);
+        }
+        Character blank = new Character(' ');
+        Character miss = new Character('X');
+        for (int i = 0; i < ship.blocks; ++i) {
+            int searchRow = ship.pivot[0] + ship.route[i][0];
+            int searchColumn = ship.pivot[1] + ship.route[i][1];
+            //System.out.println("search area situation: " + map[searchRow][searchColumn].toString());
+            if (searchRow >= 20 || searchColumn >= 10){
+                return new Character[]{'o', 'o'};
+            }
+            if (!map[searchRow][searchColumn].equals(blank) && !map[searchRow][searchColumn].equals(miss)) {
+                return new Character[]{(char) (row + 'A'), (char) (column + '0')};
+            }
+        }
+
+        return new Character[]{'x', 'x'};
+    }
+
 
     // determine if the ship is full setted as a sign to end setting phase
     public boolean isFull() {
@@ -156,5 +191,23 @@ public class selfGrid extends Grid {
         this.shipList[shipNumber].updateFire(row, column);
     }
 
+
+    public void displayAliveShips() {
+        int count = 0;
+        String status = "alive";
+        for (Ship ship : this.shipList) {
+            status = "fall";
+            if (!ship.isFall()) {
+                status = "alive";
+            }
+            count++;
+            System.out.println("Ship " + count + ": " + ship.type + ", status: " + status);
+            String s = "";
+            for (int[] r : ship.route) {
+                s += "{" + (char)('A' + r[0] + ship.pivot[0]) + "," + ( r[1] + ship.pivot[1]) + "} ";
+            }
+            System.out.println(s);
+        }
+    }
 
 }

@@ -31,15 +31,21 @@ class shipFighting_ask implements Ask {
                 break;
             }
             if (s.toLowerCase().charAt(0) == 'm'){
-
+                if (x.moveRemainNum <= 0) {
+                    System.out.println("There is no token for you to use Move, remember you can only use it twice!");
+                    continue;
+                }
+                moveAction(x);
+                x.moveRemainNum--;
                 break;
             }
             if (s.toLowerCase().charAt(0) == 's'){
-                if (x.sonarRemain <= 0) {
+                if (x.sonarRemainNum <= 0) {
                     System.out.println("There is no token for you to use Sonar, remember you can only use it once!");
                     continue;
                 }
                 sonarAction(x);
+                x.sonarRemainNum--;
                 break;
             }
         } while (true);
@@ -170,7 +176,87 @@ class shipFighting_ask implements Ask {
         System.out.println("Destroyers occupy " + dNum + " squares");
         System.out.println("Battleships occupy " + bNum + " squares");
         System.out.println("Carriers occupy " + cNum + " squares");
-        x.sonarRemainNum--;
     }
 
+    @Override
+    // move self
+    public void moveAction(Player x){
+        String s;
+        System.out.println("These are the ships that still alive");
+        x.displayMoveShips();
+        System.out.println("You may type in any coordinate that is part of the ship to a new location");
+        do {
+            System.out.println("Please type in the coordination of the ship you want to move, any other coordination is invalid ");
+            s = input.reader.nextLine();
+            System.out.println(s);
+            if (x.findShip(s) == -1){
+                System.out.println("This is not a ship's coordination");
+            }
+        }while(!ValidInputStr(s, x) || x.findShip(s) == -1);
+        int oldRow = (int)(s.toLowerCase().charAt(0) - 'a');
+        int oldColumn = (int) (s.charAt(1) - '0');
+
+        int shipNum = x.findShip(oldRow, oldColumn);
+
+        do {
+            System.out.println("Please type in the new coordination and orientation (as the left corner's block)");
+            s = input.reader.nextLine();
+            System.out.println(s);
+        }while(!validMoveinput(s, shipNum) || !validMoveLocation(x, s, shipNum));
+
+
+    }
+
+    @Override
+    public boolean validMoveinput(String s, int shipNum){
+        if (s.length() != 3){
+            System.out.println("You should only put here 3 characters: row char, column number, direction");
+            return false;
+        }
+        if (s.toLowerCase().charAt(0) < 'a' || s.toLowerCase().charAt(0) > 't'){
+            System.out.println("the row char should be a-t or A-T");
+            return false;
+        }
+        if (s.charAt(1) < '0' || s.charAt(1) > '9'){
+            System.out.println("the column number should be 0-9");
+            return false;
+        }
+        if (shipNum < 5){
+            if (s.toLowerCase().charAt(2) != 'v' && s.toLowerCase().charAt(2) != 'h') {
+                Character a = new Character(s.toLowerCase().charAt(2));
+                System.out.println(a.toString() + "Submarine or Destroyer's direction should be V(v) or H(h)");
+                return false;
+            }
+            return true;
+        }
+        if (s.toLowerCase().charAt(2) != 'u' && s.toLowerCase().charAt(2) != 'r' && s.toLowerCase().charAt(2) != 'd' && s.toLowerCase().charAt(2) != 'l') {
+            Character a = new Character(s.toLowerCase().charAt(2));
+            System.out.println(a.toString() + "Battleship or Carrier's direction should be U(u), R(r), D(d), L(l)");
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public boolean validMoveLocation(Player x, String s, int shipNum){
+        int row = (int)(s.toLowerCase().charAt(0) - 'a');
+        int column = (int) (s.charAt(1) - '0');
+        char direction = s.toLowerCase().charAt(2);
+        Character unblanksig = new Character('x');
+        Character outOfIndex = new Character('o');
+        Character[] conflictLoc = x.getGridConflict(row, column, direction, shipNum);
+        if (conflictLoc[1].equals(outOfIndex)){
+            System.out.println("Out of index, be careful");
+            System.out.println("Please input the place again");
+            return false;
+        }
+        if (!conflictLoc[1].equals(unblanksig)){
+            System.out.println("Conflict on {" + conflictLoc[0].toString() + "," +  conflictLoc[1].toString() + "}");
+            System.out.println("Please input the place again");
+            System.out.println("\n");
+            return false;
+        }
+        return true;
+    }
 }

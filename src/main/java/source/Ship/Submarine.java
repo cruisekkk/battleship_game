@@ -7,6 +7,7 @@ class Submarine extends Ship{
         this.direction = direction;
         this.blocks = 2;
         this.name = new Character('s');
+        this.type = new String("Submarine");
         initRoute(direction);
         initMap();
     }

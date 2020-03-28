@@ -8,6 +8,7 @@ class Destroyer extends Ship {
         this.direction = direction;
         this.blocks = 3;
         this.name = new Character('d');
+        this.type = new String("Destroyer");
         initRoute(direction);
         initMap();
     }

@@ -15,4 +15,8 @@ interface Ask {
 
     void fireAction(Player x);
     void sonarAction(Player x);
+    void moveAction(Player x);
+    boolean validMoveinput(String s, int shipNum);
+    boolean validMoveLocation(Player x, String s, int shipNum);
+
 }
