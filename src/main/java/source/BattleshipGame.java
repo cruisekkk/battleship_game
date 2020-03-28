@@ -99,9 +99,61 @@ public class BattleshipGame {
 
     void autoplay() throws IOException {
 
+        // transfer to shipSetting
+        phase = phase.updateToShipSetting();
+        // in the shipSetting
+        // player B is the compute
+        // index it by players[1]
+        while(!players[0].isFullSetted()){
+            phase.printPrompt(players[0]);
+            phase.askUser(players[0]); // where do you want to put
+        }
+
+        // auto-set the 10 ships
+        players[1].setShip(0,0,'v');
+        players[1].setShip(0,1,'v');
+        players[1].setShip(0,2,'v');
+        players[1].setShip(0,3,'v');
+        players[1].setShip(0,4,'v');
+        players[1].setShip(0,5, 'r');
+        players[1].setShip(0,7, 'l');
+        players[1].setShip(4,0, 'l');
+        players[1].setShip(4,3, 'u');
+        players[1].setShip(4,5, 'd');
 
 
+        // transfer to fighting phase
+        phase = phase.updateToShipFighting();
+        // set mutual name
+        players[0].setEnemyName(players[1].name);
+        players[1].setEnemyName(players[0].name);
+        // set mutual Grid
+        players[0].setEnemyGrid(players[1].selfGrid);
+        players[1].setEnemyGrid(players[0].selfGrid);
 
+        // the logic loop in the fighting phase
+        while (true) {
+            phase.printPrompt(players[0]);
+            phase.askUser(players[0]); // change the enemy
+
+            players[1].updateFire(players[0].getFiredLocation());
+            players[1].enemyGrid.unHidMap = players[0].selfGrid.map;
+
+            if (players[1].hasLost()) { // depends on the self
+                System.out.println("Game Over \nPlayer " + players[0].name + " has won!");
+                break;
+            }
+            phase.printPrompt(players[1]);
+            phase.askUser(players[1]);
+
+            players[0].updateFire(players[1].getFiredLocation());
+            players[0].enemyGrid.unHidMap = players[1].selfGrid.map;
+
+            if (players[0].hasLost()) { // depends on the enemy
+                System.out.println("Game Over \nPlayer " + players[1].name + " has won!");
+                break;
+            }
+        }
 
         return;
     }
