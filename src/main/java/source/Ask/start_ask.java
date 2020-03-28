@@ -19,7 +19,12 @@ class start_ask implements Ask {
         if (s.toLowerCase().equals("no")){
             System.exit(0);
         }
+
+
+
     }
+
+
     @Override
     // the only two valid string is yes and no
     public boolean ValidInputStr(String s, Player x){

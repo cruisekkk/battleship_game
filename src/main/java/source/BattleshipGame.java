@@ -33,6 +33,26 @@ public class BattleshipGame {
         phase.askUser(playerA);
         // if the user is not ready, the game will quit
 
+        // ask which mode
+        //int mode = 0;
+        System.out.println("We provide two modes in the game");
+        System.out.println("1: human vs human");
+        System.out.println("2: human vs computer");
+        String s = "";
+        do {
+            System.out.println("[1/2] :Enter the mode you want to play in");
+            s = input.reader.nextLine();
+            System.out.println(s);
+            if (s.length() != 1){
+                System.out.println("you can only put 1 number here, please enter it again");
+            }
+        } while (s.length()!=1 || (s.charAt(0)!= '1' && s.charAt(0)!='2'));
+
+        if (s.charAt(0) == '2'){ // auto play
+            autoplay();
+            return;
+        }
+
         // transfer to shipSetting
         phase = phase.updateToShipSetting();
         // in the shipSetting
@@ -76,4 +96,14 @@ public class BattleshipGame {
             }
         }
     }
+
+    void autoplay() throws IOException {
+
+
+
+
+
+        return;
+    }
+
 }
