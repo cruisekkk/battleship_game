@@ -1,5 +1,5 @@
 package source;
-
+import java.util.*;
 // a sub class of Grid
 // maintain the map data during shipsettin and ship fighting
 public class selfGrid extends Grid {
@@ -47,7 +47,7 @@ public class selfGrid extends Grid {
     // update the ship's location on the map in the setting phase
     void drawShipOnMap(Ship ship) {
         for (int i = 0; i < ship.blocks; ++i) {
-            map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ship.name;
+            map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ship.shipMap[ship.route[i][0]][ship.route[i][1]];//ship.name;
         }
     }
 
@@ -210,4 +210,51 @@ public class selfGrid extends Grid {
         }
     }
 
+    public void move(int oldRow, int oldColumn, int newRow, int newColumn, char newDirection, int shipNum){
+        // find the hitted set
+        ArrayList<Integer> hittedSet = findHittedSet(shipNum);
+
+        Ship ship = this.shipList[shipNum];
+        //clear the map without the '*'
+        for (int i = 0; i < ship.blocks; ++i) {
+            if (map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]].equals(ship.name)){
+                map[ship.pivot[0] + ship.route[i][0]][ship.pivot[1] + ship.route[i][1]] = ' ';
+            }
+        }
+
+        // redirection for the origianl ship obejct
+        // 2 initialize
+        if (shipNum < 2) {
+            this.shipList[shipNum] = new Submarine(newRow, newColumn, newDirection);
+        }
+        if (shipNum >= 2 && shipNum < 5) {
+            this.shipList[shipNum] = new Destroyer(newRow, newColumn, newDirection);
+        }
+        if (shipNum >= 5 && shipNum < 8) {
+            this.shipList[shipNum] = new Battleship(newRow, newColumn, newDirection);
+        }
+        if (shipNum >= 8 && shipNum < 10) {
+            this.shipList[shipNum] = new Carrier(newRow, newColumn, newDirection);
+        }
+
+        ship = this.shipList[shipNum];
+        // 3 add hiited block
+        for (int hit : hittedSet){
+            ship.shipMap[ship.route[hit][0]][ship.route[hit][1]] = '*';
+        }
+
+        // store it into the map
+        drawShipOnMap(shipList[shipNum]);
+    }
+
+    public ArrayList<Integer> findHittedSet(int shipNum){
+        Ship ship = this.shipList[shipNum];
+        ArrayList<Integer> set = new ArrayList<Integer>();
+        for (int i = 0; i < ship.blocks; ++i) {
+            if (ship.shipMap[ship.route[i][0]][ship.route[i][1]].equals('*')){
+                set.add(i);
+            }
+        }
+        return set;
+    }
 }

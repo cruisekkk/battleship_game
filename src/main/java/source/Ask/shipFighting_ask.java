@@ -117,14 +117,14 @@ class shipFighting_ask implements Ask {
 
     @Override
     // to check if the location is already fired by the player
-    public boolean ValidInputShip(String s, Player x){
-        int row = (int)(s.toLowerCase().charAt(0) - 'a');
-        int column = (int) (s.charAt(1) - '0');
-        Character blanksig = new Character(' ');
-        if (!x.enemyGrid.map[row][column].equals(blanksig)){
-            System.out.println("{" + s.toLowerCase().charAt(0) + " , " + column + "} has already be fired and it is not blank" );
-            return false;
-        }
+    public boolean ValidInputShip(String s, Player x){ // can always fire!
+        //int row = (int)(s.toLowerCase().charAt(0) - 'a');
+        //int column = (int) (s.charAt(1) - '0');
+        //Character blanksig = new Character(' ');
+        //if (!x.enemyGrid.map[row][column].equals(blanksig)){
+        //    System.out.println("{" + s.toLowerCase().charAt(0) + " , " + column + "} has already be fired and it is not blank" );
+        //    return false;
+        //}
         return true;
     }
 
@@ -204,6 +204,11 @@ class shipFighting_ask implements Ask {
             System.out.println(s);
         }while(!validMoveinput(s, shipNum) || !validMoveLocation(x, s, shipNum));
 
+        int newRow = (int)(s.toLowerCase().charAt(0) - 'a');
+        int newColumn = (int) (s.charAt(1) - '0');
+        char newDirection = s.toLowerCase().charAt(2);
+
+        x.selfGrid.move(oldRow, oldColumn, newRow, newColumn, newDirection, shipNum);
 
     }
 

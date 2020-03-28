@@ -17,7 +17,7 @@ class Battleship extends Ship {
     @Override
     void initRoute(char direction){
         if (direction == 'u'){
-            this.route = new int[][] {{1,0}, {1,1}, {0,1}, {1,2}};
+            this.route = new int[][] {{0,1}, {1,0}, {1,1}, {1,2}};
         }
 
         if (direction == 'l'){
@@ -25,11 +25,11 @@ class Battleship extends Ship {
         }
 
         if (direction == 'r'){
-            this.route = new int[][] {{0,0}, {1,0}, {2,0}, {1,1}};
+            this.route = new int[][] {{1,1}, {0,0}, {1,0}, {2,0}};
         }
 
         if (direction == 'd'){
-            this.route = new int[][] {{0,0}, {0,1}, {0,2}, {1,1}};
+            this.route = new int[][] {{1,1}, {0,2}, {0,1}, {0,0}};
         }
     }
 
