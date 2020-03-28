@@ -16,7 +16,7 @@ public class BattleshipGame {
 
     // initialize the phase object : a start phase
     void CreateGamePhase() {
-        phase = new Start();
+        phase = new source.Start();
     }
 
     // create two players

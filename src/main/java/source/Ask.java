@@ -18,5 +18,4 @@ interface Ask {
     void moveAction(Player x);
     boolean validMoveinput(String s, int shipNum);
     boolean validMoveLocation(Player x, String s, int shipNum);
-
 }
