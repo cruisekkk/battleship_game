@@ -131,7 +131,9 @@ public class BattleshipGame {
         players[0].setEnemyGrid(players[1].selfGrid);
         players[1].setEnemyGrid(players[0].selfGrid);
 
+
         // the logic loop in the fighting phase
+        int count = 0;
         while (true) {
             phase.printPrompt(players[0]);
             phase.askUser(players[0]); // change the enemy
@@ -143,9 +145,8 @@ public class BattleshipGame {
                 System.out.println("Game Over \nPlayer " + players[0].name + " has won!");
                 break;
             }
-            phase.printPrompt(players[1]);
-            phase.askUser(players[1]);
 
+            autofire(count/10, count%10, players[1]);
             players[0].updateFire(players[1].getFiredLocation());
             players[0].enemyGrid.unHidMap = players[1].selfGrid.map;
 
@@ -153,9 +154,37 @@ public class BattleshipGame {
                 System.out.println("Game Over \nPlayer " + players[1].name + " has won!");
                 break;
             }
+            count++;
+            if (count == 200){
+                count = 0;
+            }
         }
-
         return;
     }
 
+    public void autofire(int row, int column, Player x){
+        // fire
+        if (x.findBlock(row, column).equals('s') ){
+            x.fireAt(row, column, new Character('s')); // fire at
+            System.out.println("You hit a submarine!");
+        }
+        else if (x.findBlock(row, column).equals('b') ){
+            x.fireAt(row, column, new Character('b')); // fire at
+            System.out.println("You hit a battleship!");
+        }
+        else if (x.findBlock(row, column).equals('c') ){
+            x.fireAt(row, column, new Character('c')); // fire at
+            System.out.println("You hit a carrier!");
+        }
+        else if (x.findBlock(row, column).equals('d') ){
+            x.fireAt(row, column, new Character('d')); // fire at
+            System.out.println("You hit a destroyer!");
+        }
+        else if (x.findBlock(row, column).equals(' ') ){
+            x.fireAt(row, column, new Character('X')); // fire at
+            System.out.println("You missed!");
+        }
+
+        x.setFiredLocation(row, column);
+    }
 }
