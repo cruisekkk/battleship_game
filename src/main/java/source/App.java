@@ -12,12 +12,11 @@ public class App {
         return "";
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, IllegalAccessException, InstantiationException {
 
         System.out.println(new App().getGreeting());
         BattleshipGame game = new BattleshipGame();
 
-        new JFrameDemo();
 
         try {
             game.play();

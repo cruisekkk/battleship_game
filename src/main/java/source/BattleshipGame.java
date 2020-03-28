@@ -1,4 +1,5 @@
 package source;
+import javax.swing.*;
 import java.util.Scanner;
 import java.io.*;
 
@@ -27,6 +28,12 @@ public class BattleshipGame {
     }
 
     void play() throws IOException {
+        //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        //SwingUtilities.invokeLater();
+        JFrameDemo myGUI = new JFrameDemo();
+        //myGUI.setVisible(true);
+
+
         System.out.println("Game start!\n");
         // in the start interface
         phase.printPrompt(playerA);
@@ -39,20 +46,31 @@ public class BattleshipGame {
         System.out.println("1: human vs human");
         System.out.println("2: human vs computer");
         String s = "";
-        do {
-            System.out.println("[1/2] :Enter the mode you want to play in");
-            s = input.reader.nextLine();
-            System.out.println(s);
-            if (s.length() != 1){
-                System.out.println("you can only put 1 number here, please enter it again");
+//        do {
+//            System.out.println("[1/2] :Enter the mode you want to play in");
+//            s = input.reader.nextLine();
+//            System.out.println(s);
+//            if (s.length() != 1){
+//                System.out.println("you can only put 1 number here, please enter it again");
+//            }
+//
+//        } while (s.length()!=1 || (s.charAt(0)!= '1' && s.charAt(0)!='2'));
+        System.out.println(myGUI.MODE);
+        while(true){
+            System.out.println(myGUI.MODE);
+            if (myGUI.MODE != 0){
+                System.out.println(myGUI.MODE);
+                break;
             }
-        } while (s.length()!=1 || (s.charAt(0)!= '1' && s.charAt(0)!='2'));
-
-        if (s.charAt(0) == '2'){ // auto play
+        }
+        System.out.println(myGUI.MODE);
+        System.out.println("here!!!!!!!!!!!!");
+        if (myGUI.MODE ==1 || s.charAt(0) == '2'){ // auto play
+            System.out.println("into auto play");
             autoplay();
             return;
         }
-
+        System.out.println("jump to here!!!!!!!!!!!!");
         // transfer to shipSetting
         phase = phase.updateToShipSetting();
         // in the shipSetting
