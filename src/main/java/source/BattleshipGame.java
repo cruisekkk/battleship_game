@@ -58,6 +58,7 @@ public class BattleshipGame {
             phase.askUser(players[0]); // change the enemy
 
             players[1].updateFire(players[0].getFiredLocation());
+            players[1].enemyGrid.unHidMap = players[0].selfGrid.map;
 
             if (players[1].hasLost()) { // depends on the self
                 System.out.println("Game Over \nPlayer " + players[0].name + " has won!");
@@ -67,6 +68,8 @@ public class BattleshipGame {
             phase.askUser(players[1]);
 
             players[0].updateFire(players[1].getFiredLocation());
+            players[0].enemyGrid.unHidMap = players[1].selfGrid.map;
+
             if (players[0].hasLost()) { // depends on the enemy
                 System.out.println("Game Over \nPlayer " + players[1].name + " has won!");
                 break;
